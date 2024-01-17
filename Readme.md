@@ -1,4 +1,14 @@
 # GitHub Actions Importer IssueOps
+transform "buildJavaScriptApp" do |item|
+  command = ["build", "package", "deploy"].map do |script|
+    "npm run #{script}"
+  end
+
+  {
+    name: "build javascript app",
+    run: command.join("\n")
+  }
+end
 
 The GitHub Actions Importer IssueOps repository demonstrates the functionality necessary to run GitHub Actions Importer commands through Actions and Issues, allowing you to migrate your CI/CD workflows without needing to install software on your local machine. This approach is especially useful for organizations that want to enable self-service migrations to GitHub Actions.
 
